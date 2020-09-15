@@ -1,13 +1,53 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Three.js Test</title>
-    <link rel="stylesheet" href="master.css">
-  </head>
-  <body>
-    <div class="big">
-        Test for three.js
-    </div>
-  </body>
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+	  <script src="https://threejs.org/build/three.js"></script>
+
+		<script>
+
+
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer({antialias: true});
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var geometry = new THREE.BoxGeometry();
+			var material = new THREE.MeshLambertMaterial( { color: 0xe32b6a } );
+			var cube = new THREE.Mesh( geometry, material );
+      var light = new THREE.PointLight( 0xFFFFFF, 1 , 100 );
+      light.position.set(5, 6, 10);
+      scene.add( light );
+
+      cube.rotation.z = 0.80;
+      cube.rotation.x = 0.8;
+			scene.add( cube );
+
+			camera.position.z = 5;
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+				cube.rotation.y += 0.01;
+
+
+
+
+      //  console.log(cube.rotation);
+
+
+
+				renderer.render( scene, camera );
+			};
+
+			animate();
+		</script>
+	</body>
 </html>
