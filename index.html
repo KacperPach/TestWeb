@@ -32,20 +32,22 @@
 
 			camera.position.z = 5;
 
+			//funkcja od animacji
 			var animate = function () {
 				requestAnimationFrame( animate );
 
 				cube.rotation.y += 0.01;
 
-
-
-
-      //  console.log(cube.rotation);
-
-
-
 				renderer.render( scene, camera );
 			};
+
+			// do resizowania sceny
+			window.addEventListener('resize', () => {
+					renderer.setSize( window.innerWidth, window.innerHeight);
+					camera.aspect = window.innerWidth / window.innerHeight;
+					camera.updateProjectionMatrix ();
+				}
+			);
 
 			animate();
 		</script>
