@@ -1,55 +1,59 @@
 <html>
 	<head>
 		<title>My first three.js app</title>
-		<style>
-			body { margin: 0; }
-			canvas { display: block; }
-		</style>
+		<link rel="stylesheet" href="master.css">
 	</head>
 	<body>
 	  <script src="https://threejs.org/build/three.js"></script>
+		<div class="box">
 
-		<script>
+			 xd
+
+		</div>
+		<div class="background">
+			<script>
 
 
-			var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+				var scene = new THREE.Scene();
+				var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
 
-			var renderer = new THREE.WebGLRenderer({antialias: true});
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			document.body.appendChild( renderer.domElement );
+				var renderer = new THREE.WebGLRenderer({antialias: true});
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
 
-			var geometry = new THREE.BoxGeometry();
-			var material = new THREE.MeshLambertMaterial( { color: 0xe32b6a } );
-			var cube = new THREE.Mesh( geometry, material );
-      var light = new THREE.PointLight( 0xFFFFFF, 1 , 100 );
-      light.position.set(5, 6, 10);
-      scene.add( light );
+				var geometry = new THREE.BoxGeometry();
+				var material = new THREE.MeshLambertMaterial( { color: 0xe32b6a } );
+				var cube = new THREE.Mesh( geometry, material );
+				var light = new THREE.PointLight( 0xFFFFFF, 1 , 100 );
+				light.position.set(5, 6, 10);
+				scene.add( light );
 
-      cube.rotation.z = 0.80;
-      cube.rotation.x = 0.8;
-			scene.add( cube );
+				cube.rotation.z = 0.80;
+				cube.rotation.x = 0.8;
+				scene.add( cube );
 
-			camera.position.z = 5;
+				camera.position.z = 5;
 
-			//funkcja od animacji
-			var animate = function () {
-				requestAnimationFrame( animate );
+				//funkcja od animacji
+				var animate = function () {
+					requestAnimationFrame( animate );
 
-				cube.rotation.y += 0.01;
+					cube.rotation.y += 0.01;
 
-				renderer.render( scene, camera );
-			};
+					renderer.render( scene, camera );
+				};
 
-			// do resizowania sceny
-			window.addEventListener('resize', () => {
-					renderer.setSize( window.innerWidth, window.innerHeight);
-					camera.aspect = window.innerWidth / window.innerHeight;
-					camera.updateProjectionMatrix ();
-				}
-			);
+				// do resizowania sceny
+				window.addEventListener('resize', () => {
+						renderer.setSize( window.innerWidth, window.innerHeight);
+						camera.aspect = window.innerWidth / window.innerHeight;
+						camera.updateProjectionMatrix ();
+					}
+				);
 
-			animate();
-		</script>
+				animate();
+			</script>
+		</div>
+
 	</body>
 </html>
